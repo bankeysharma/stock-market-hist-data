@@ -23,6 +23,8 @@ while ($currentDate -le $endDateTime) {
     Write-Host "Processing date: $formattedDate"
     & $exePath $formattedDate
 
+    Start-Sleep -Milliseconds 500
+
     # Increment the current date by one day
     $currentDate = $currentDate.AddDays(1)
 }

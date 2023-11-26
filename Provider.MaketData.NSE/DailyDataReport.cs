@@ -60,10 +60,11 @@ namespace Provider.MaketData.NSE {
 
             Log.WriteLog(string.Format("Initiating download of {0} for {1}", report.ToString(), reportDate.ToShortDateString()));
 
-            try {
+            try
+            {
                 switch (report) {
                     case DailyReportType.BhavCopyFull:
-                        DownloadHelper.WriteContentToFile(DownloadBhavCopyFull(reportDate).Result, this.DownloadDirectory, "bhav-copy-full", string.Format("{0}.csv", reportDate.ToString("ddMMyyyy")));
+                        DownloadHelper.WriteContentToFile(DownloadBhavCopyFull(reportDate).Result, this.DownloadDirectory, "bhav-copy-full", string.Format("{0}.csv", reportDate.ToString("yyyyMMdd")));
                         break;
                 }
             } catch (FileNotFoundException) { 
@@ -87,6 +88,12 @@ namespace Provider.MaketData.NSE {
         protected Task<string> DownloadBhavCopyFull(DateTime reportDate) {
 
             if(reportDate == null || reportDate == DateTime.MinValue) throw new ArgumentNullException(nameof(reportDate));
+
+            if (reportDate.DayOfWeek == DayOfWeek.Saturday || reportDate.DayOfWeek == DayOfWeek.Sunday) {
+                string errorLog = string.Format("Skipping Bhav Copy, its weekend - {0}", reportDate.ToShortDateString());
+                Log.WriteLog(errorLog);
+                throw new FileNotFoundException(errorLog);
+            }
 
             UriBuilder uriBuilder = new UriBuilder("https", "nsearchives.nseindia.com");
             uriBuilder.Path = string.Format(@"/products/content/sec_bhavdata_full_{0}.csv", reportDate.ToString("ddMMyyyy"));

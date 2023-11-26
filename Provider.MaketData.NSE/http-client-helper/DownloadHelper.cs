@@ -14,7 +14,7 @@ namespace Provider.MaketData.NSE.HttpClientHelper {
 
             Log.WriteLog(string.Format("Downloadinging, In memory - {0} ", absoluteUriToDownload));
 
-            string contentString;
+            string contentString = string.Empty;
 
             using (HttpClient client = new HttpClient()) {
                 client.BaseAddress = new Uri(absoluteUriToDownload);
