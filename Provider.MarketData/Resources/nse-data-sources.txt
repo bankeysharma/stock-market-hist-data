@@ -1,0 +1,55 @@
+﻿//* http locations to download various nse data
+
+//* Base location of daily data reports: https://www.nseindia.com/all-reports
+
+//* Full BhavCopy and Security Deliverable Data: https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_24112023.csv
+// SYMBOL SERIES    DATE1 PREV_CLOSE	 OPEN_PRICE	 HIGH_PRICE	 LOW_PRICE	 LAST_PRICE	 CLOSE_PRICE	 AVG_PRICE	 TTL_TRD_QNTY	 TURNOVER_LACS	 NO_OF_TRADES	 DELIV_QTY	 DELIV_PER
+// CIPLA	 EQ	 08-Sep-2023	1249.3	1249.5	1262	1239	1243	1244.6	1247.17	787710	9824.12	54343	339736	43.13
+
+//* Bhav Copy security data: https://nsearchives.nseindia.com/content/historical/EQUITIES/2023/SEP/cm07SEP2023bhav.csv.zip
+// SYMBOL SERIES	OPEN	HIGH	LOW	CLOSE	LAST	PREVCLOSE	TOTTRDQTY	TOTTRDVAL	TIMESTAMP	TOTALTRADES	ISIN
+// RELIANCE	EQ	2440	2456	2422.95	2448.2	2451	2432	11554644	28145173638	8-Sep-23	203161	INE002A01018
+
+//* Market Activity Report: https://nsearchives.nseindia.com/archives/equities/mkt/MA080923.csv
+// INDEX PREVIOUS CLOSE	OPEN	HIGH	LOW	CLOSE	GAIN/LOSS
+// Nifty 50	19727.05	19774.8	19867.15	19727.05	19819.95	92.9
+
+// TOP 25 Securities Today :					
+// SYMBOL SERIES	PREV. CLOSE	CLOSE PRICE	%VAR	 VALUE(Rs Crs)
+// RELIANCE EQ	2432	2448.2	0.67	2814.52
+// HDFCBANK EQ	1610.85	1623.4	0.78	2794.13
+
+// Top Five Nifty 50 Gainers:						
+// SYMBOL SERIES	CLOSE PRICE	PREV.CLOSE	%CHANGE		
+// COALINDIA EQ	282.1	274	2.96		
+
+// Top Five Nifty 50 Losers:						
+// SYMBOL SERIES	CLOSE PRICE	PREV.CLOSE	%CHANGE		
+// EICHERMOT EQ	3370.9	3402.45	-0.93		
+
+// Securities Price Volume Data in Normal market						
+// SYMBOL SERIES	CLOSE PRICE	TRADED VALUE 	TRADED QUANTITY		
+// RIIL EQ	1008.25	204185977.4	201180		
+
+//* Secrity wise Delivery Report: https://nsearchives.nseindia.com/archives/equities/mto/MTO_08092023.DAT
+// Security Wise Delivery Position - Compulsory Rolling Settlement
+// 10, MTO,08092023,2062944065,0002117
+// Trade Date <08-SEP-2023>, Settlement Type <N>
+// Record Type, Sr No, Name of Security, Quantity Traded, Deliverable Quantity(gross across client level),% of Deliverable Quantity to Traded Quantity
+// 20,1556, RELIANCE, EQ,11554644,4939162,42.75
+
+//*  ShortSelling: https://nsearchives.nseindia.com/content/equities/ShortSelling.csv
+// Security Name	Symbol Name	Trade Date	Quantity
+// CIPLA LTD	CIPLA	1-Sep-23	24050
+// HERO MOTOCORP LTD	HEROMOTOCO	1-Sep-23	900
+
+//* Price Band Change: https://nsearchives.nseindia.com/content/equities/eq_band_changes_11092023.csv
+//                     https://nsearchives.nseindia.com/content/equities/eq_band_changes_08092023.csv
+// Sr.No Symbol	Series	Security Name	From	To
+// 1	JAYNECOIND	EQ	JAYASWAL NECO INDUSTRIES LIMITED	10	5
+// 2	CENTEXT	BE	CENTURY EXTRUSIONS LIMITED	10	5
+// 3	CYBERMEDIA	BE	CYBER MEDIA (INDIA) LIMITED 20	5
+
+//* Daily Volatility: https://nsearchives.nseindia.com/archives/nsccl/volt/CMVOLT_08092023.CSV
+// Date Symbol	Underlying Close Price (A)	Underlying Previous Day Close Price (B)	Underlying Log Returns (C) = LN(A / B)    Previous Day Underlying Volatility (D)	Current Day Underlying Daily Volatility (E) = Sqrt(0.995 * D * D + 0.005 * C * C)   Underlying Annualised Volatility (F) = E * Sqrt(365)
+// 8 - Sep - 23    RELIANCE    2448.25	2432	0.0067	0.014	0.014	0.2675
