@@ -15,6 +15,9 @@ using static System.Net.Mime.MediaTypeNames;
 namespace nse_hist_data_downloader_lib
 {
     internal class Program {
+
+        private const string V = @"D:\local-store\workspace\stock-market-hist-data-store";
+
         static void Main(string[] args) {
 
         /* 
@@ -24,7 +27,7 @@ namespace nse_hist_data_downloader_lib
 
             if(args.Length == 0) throw new ArgumentNullException("args");
 
-            string downloadDirectory = @"D:\local-store\market-data-store";
+            string downloadDirectory = V;
 
             DailyDataReport reportProvider = new DailyDataReport(downloadDirectory, 1*1000);
 
