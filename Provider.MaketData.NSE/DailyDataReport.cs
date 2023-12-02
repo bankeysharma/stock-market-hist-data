@@ -13,9 +13,7 @@ namespace Provider.MaketData.NSE {
     public class DailyDataReport {
         protected string DownloadDirectory { get; set; }
         protected int DownloadInterval { get; set; }
-
         protected string SchemeName { get; set; }
-
         protected string HostNameNSEArchive { get; set; }
         protected string HostNameNSEIndia { get; set; }
 
