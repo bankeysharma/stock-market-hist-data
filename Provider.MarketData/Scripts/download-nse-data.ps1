@@ -1,5 +1,7 @@
 # .\download-nse-data.ps1 -reportName "BhavCopyFull" -startDate "01/01/2023" -endDate "01/10/2023"
 # .\download-nse-data.ps1 -reportName "MarketActivity" -startDate "01/01/2023" -endDate "01/10/2023"
+# .\download-nse-data.ps1 -reportName "DailyVolatility" -startDate "01/01/2023" -endDate "01/10/2023"
+
 
 param(
     [string]$exePath = "D:\local-store\workspace\stock-market-hist-data\Provider.MarketData\bin\Debug\Provider.MarketData.exe",

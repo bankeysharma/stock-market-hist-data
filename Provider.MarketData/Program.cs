@@ -25,9 +25,9 @@ namespace nse_hist_data_downloader_lib
          * https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_24112023.csv
         */
 
-            if(args.Length < 2) throw new ArgumentNullException("retuire report name and report date as arguments");
+            if(args.Length < 2) throw new ArgumentNullException("require report name and report date as arguments");
 
-            DateTime reportDate = DateTime.ParseExact(args[1], "MM/dd/yyyy", null);
+            DateTime reportStartDate = DateTime.ParseExact(args[1], "MM/dd/yyyy", null);
 
             DailyReportType reportType;
 
@@ -36,7 +36,7 @@ namespace nse_hist_data_downloader_lib
                 return; 
             }
 
-            bool downloadStatus = new DailyDataReport(_DownloadDirectory, 1*1000).DownloadDailyDataReport(reportType, reportDate);
+            bool downloadStatus = new DailyDataReport(_DownloadDirectory, 1*1000).DownloadDailyDataReport(reportType, reportStartDate);
             Console.WriteLine(string.Format("{0}", downloadStatus ? "Download successful!" : "Download failed!"));
         }
     }

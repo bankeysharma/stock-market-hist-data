@@ -7,10 +7,24 @@ using System.Threading.Tasks;
 namespace Provider.MaketData.NSE {
     public enum DailyReportType {
         /// <summary>
-        /// EOD Seucirty Data such as Price, Volume, Traded Qty, and Deliveries
+        /// Default value that do not map to any report
         /// </summary>
         None,
+        /// <summary>
+        /// EOD Seucirty Data such as Price, Volume, Traded Qty, and Deliveries
+        /// </summary>
         BhavCopyFull,
-        MarketActivity
+        /// <summary>
+        /// 
+        /// </summary>
+        MarketActivity,
+        /// <summary>
+        /// 
+        /// </summary>
+        DailyVolatility,
+        /// <summary>
+        /// 
+        /// </summary>
+        CorpAction
     }
 }

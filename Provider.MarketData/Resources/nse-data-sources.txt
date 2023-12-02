@@ -45,6 +45,7 @@
 
 //* Price Band Change: https://nsearchives.nseindia.com/content/equities/eq_band_changes_11092023.csv
 //                     https://nsearchives.nseindia.com/content/equities/eq_band_changes_08092023.csv
+// This information belongs to security under SNE survillence to control volatility
 // Sr.No Symbol	Series	Security Name	From	To
 // 1	JAYNECOIND	EQ	JAYASWAL NECO INDUSTRIES LIMITED	10	5
 // 2	CENTEXT	BE	CENTURY EXTRUSIONS LIMITED	10	5
@@ -53,3 +54,13 @@
 //* Daily Volatility: https://nsearchives.nseindia.com/archives/nsccl/volt/CMVOLT_08092023.CSV
 // Date Symbol	Underlying Close Price (A)	Underlying Previous Day Close Price (B)	Underlying Log Returns (C) = LN(A / B)    Previous Day Underlying Volatility (D)	Current Day Underlying Daily Volatility (E) = Sqrt(0.995 * D * D + 0.005 * C * C)   Underlying Annualised Volatility (F) = E * Sqrt(365)
 // 8 - Sep - 23    RELIANCE    2448.25	2432	0.0067	0.014	0.014	0.2675
+
+//* Securities in Auction: https://nsearchives.nseindia.com/content/nsccl/AUB_2023226_01122023.csv
+// Sr No	Symbol	Series	Total Qty
+// 1	20MICRONS	EQ	1
+// 2	AARTIIND	EQ	15000
+
+//* Nifty50Top10: https://nsearchives.nseindia.com/content/indices/top10nifty50_301123.csv
+// SYMBOL	SECURITY	WEIGHTAGE(%)
+// HDFCBANK	 HDFC BANK LTD.	13.25
+// RELIANCE	 RELIANCE INDUSTRIES LTD.	9.11
