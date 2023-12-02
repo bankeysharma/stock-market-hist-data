@@ -1,7 +1,9 @@
-# .\download-nse-data.ps1 -startDate "01/01/2023" -endDate "01/10/2023"
+# .\download-nse-data.ps1 -reportName "BhavCopyFull" -startDate "01/01/2023" -endDate "01/10/2023"
+# .\download-nse-data.ps1 -reportName "MarketActivity" -startDate "01/01/2023" -endDate "01/10/2023"
 
 param(
     [string]$exePath = "D:\local-store\workspace\stock-market-hist-data\Provider.MarketData\bin\Debug\Provider.MarketData.exe",
+    [string]$reportName,
     [string]$startDate,
     [string]$endDate
 )
@@ -21,7 +23,7 @@ $currentDate = $startDateTime
 while ($currentDate -le $endDateTime) {
     $formattedDate = $currentDate.ToString("MM/dd/yyyy")
     Write-Host "Processing date: $formattedDate"
-    & $exePath $formattedDate
+    & $exePath $reportName $formattedDate
 
     Start-Sleep -Milliseconds 500
 

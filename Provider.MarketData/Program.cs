@@ -16,7 +16,7 @@ namespace nse_hist_data_downloader_lib
 {
     internal class Program {
 
-        private const string V = @"D:\local-store\workspace\stock-market-hist-data-store";
+        private const string _DownloadDirectory = @"D:\local-store\workspace\stock-market-hist-data-store";
 
         static void Main(string[] args) {
 
@@ -25,19 +25,19 @@ namespace nse_hist_data_downloader_lib
          * https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_24112023.csv
         */
 
-            if(args.Length == 0) throw new ArgumentNullException("args");
+            if(args.Length < 2) throw new ArgumentNullException("retuire report name and report date as arguments");
 
-            string downloadDirectory = V;
+            DateTime reportDate = DateTime.ParseExact(args[1], "MM/dd/yyyy", null);
 
-            DailyDataReport reportProvider = new DailyDataReport(downloadDirectory, 1*1000);
+            DailyReportType reportType;
 
-            //reportProvider.DownloadDailyDataReport(DailyReportType.BhavCopyFull, new DateTime(2023, 11, 20), new DateTime(2023, 11, 24));
+            if (!Enum.TryParse<DailyReportType>(args[0], out reportType)) {
+                Console.WriteLine(string.Format("Invalid report name: {0}", args[0]));
+                return; 
+            }
 
-            DateTime reportDate = DateTime.ParseExact(args[0],"MM/dd/yyyy", null);
-
-            reportProvider.DownloadDailyDataReport(DailyReportType.BhavCopyFull, reportDate);
-
-            Console.WriteLine("Completed!");
+            bool downloadStatus = new DailyDataReport(_DownloadDirectory, 1*1000).DownloadDailyDataReport(reportType, reportDate);
+            Console.WriteLine(string.Format("{0}", downloadStatus ? "Download successful!" : "Download failed!"));
         }
     }
 }

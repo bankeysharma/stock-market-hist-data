@@ -1,0 +1,8 @@
+##This script require terminal running with admin permissions
+Set-ExecutionPolicy RemoteSigned
+$cert = New-SelfSignedCertificate -Type CodeSigningCert -Subject "CN=MyCodeSigningCert" -KeyUsage DigitalSignature -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" -NotAfter (Get-Date).AddYears(5)
+Export-Certificate -Cert $cert -FilePath ".\CodeSigningCert.cer"
+$cert = Get-Item "Cert:\CurrentUser\My\$($cert.Thumbprint)"
+Set-AuthenticodeSignature -FilePath ".\download-nse-data.ps1" -Certificate $cert
+Get-AuthenticodeSignature -FilePath ".\download-nse-data.ps1"
+
