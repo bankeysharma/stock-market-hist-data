@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Sockets;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.Net.Mail;
 
 namespace Provider.MaketData.NSE.HttpClientHelper {
     public static class DownloadHelper {
@@ -16,10 +23,19 @@ namespace Provider.MaketData.NSE.HttpClientHelper {
 
             string contentString = string.Empty;
 
-            using (HttpClient client = new HttpClient()) {
+            using (HttpClient client = new HttpClient(new HttpClientHandler {
+                CookieContainer = new CookieContainer(),
+                UseCookies = true,
+                UseDefaultCredentials = true,
+                PreAuthenticate = true
+
+            })) {
                 client.BaseAddress = new Uri(absoluteUriToDownload);
                 client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", string.Empty);
+
                 HttpResponseMessage response = await client.GetAsync(absoluteUriToDownload);
 
                 if (response.IsSuccessStatusCode) {
@@ -31,10 +47,8 @@ namespace Provider.MaketData.NSE.HttpClientHelper {
                     //* Read stremed content as string
                     StreamReader reader = new StreamReader(contentStream);
                     contentString = reader.ReadToEnd();
-                }
-                else
-                {
-                    throw new FileNotFoundException();
+                } else {
+                    throw new Exception(response.ToString());
                 }
             }
 

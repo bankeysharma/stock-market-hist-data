@@ -79,7 +79,7 @@ namespace Provider.MaketData.NSE {
                         DownloadHelper.WriteContentToFile(DownloadDailyVolatilityReport(reportDate).Result, DownloadDirectory, "daily-volatility", string.Format("{0}.csv", reportDate.ToString("yyyyMMdd")));
                         break;
                     case DailyReportType.CorpAction:
-                        DownloadHelper.WriteContentToFile(DownloadCorpActions(reportDate,DateTime.Now).Result, DownloadDirectory, "consolidated-reports", string.Format("corp-actions-{0}-{1}.csv", reportDate.ToString("yyyyMMdd"), DateTime.Now.ToString("yyyyMMdd")));
+                        DownloadHelper.WriteContentToFile(DownloadCorpActions(reportDate,DateTime.Now).Result, DownloadDirectory, "corp-actions", string.Format("corp-actions-{0}-{1}.csv", reportDate.ToString("yyyyMMdd"), DateTime.Now.ToString("yyyyMMdd")));
                         break;
                 }
             } catch (FileNotFoundException) {
@@ -151,6 +151,7 @@ namespace Provider.MaketData.NSE {
         /// <!--
         /// https://www.nseindia.com/api/corporates-corporateActions?index=equities&from_date=02-12-2022&to_date=02-12-2023&csv=true
         /// https://www.nseindia.com/api/corporates-corporateActions?index=equities&from_date=01-12-2023&to_date=02-12-2023&csv=true
+        /// https://www.nseindia.com/api/corporates-corporateActions?index=equities&from_date=26-11-2023&to_date=03-12-2023&csv=true
         /// SYMBOL	COMPANY NAME	SERIES	PURPOSE	FACE VALUE	EX-DATE	RECORD DATE	BOOK CLOSURE START DATE	BOOK CLOSURE END DATE
         /// DHANUKA Dhanuka Agritech Limited    EQ Buy Back	2	1-Jan-19	2-Jan-19	-	-
         /// JWL Jupiter Wagons Limited  EQ Extra Ordinary General Meeting	10	1-Jan-19	-	3-Jan-19	7-Jan-19

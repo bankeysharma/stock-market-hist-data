@@ -22,13 +22,20 @@ $endDateTime = Get-Date $endDate -ErrorAction Stop
 
 # Loop through dates from start to end, calling the executable for each date
 $currentDate = $startDateTime
+
+
 while ($currentDate -le $endDateTime) {
     $formattedDate = $currentDate.ToString("MM/dd/yyyy")
     Write-Host "Processing date: $formattedDate"
     & $exePath $reportName $formattedDate
+
+    if ($reportName -eq "CorpAction") {
+        break
+    }
 
     Start-Sleep -Milliseconds 500
 
     # Increment the current date by one day
     $currentDate = $currentDate.AddDays(1)
 }
+
